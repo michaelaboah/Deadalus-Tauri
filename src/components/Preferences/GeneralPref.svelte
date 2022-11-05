@@ -33,7 +33,6 @@
             data="{['xs', 'sm', 'md', 'lg', 'xl']}"
             bind:value="{$persist.ui_font_size}"
             label="Select your prefered Font-Size"
-            size="{$persist.ui_font_size}"
             description="test description"
           />
         </Group>
