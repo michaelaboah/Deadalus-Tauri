@@ -1,6 +1,8 @@
 <script lang="ts">
   import DataGridXL from '@datagridxl/datagridxl2';
   import { Button } from '@svelteuidev/core';
+  import { persist } from '../stores/renderStore';
+  import { dark_theme } from './Grid_Utils/style';
   //   export let inputData;
   interface Column {
     title: string;
@@ -11,6 +13,7 @@
   let grid: { getData: () => any };
 
   let options = {
+    theme: $persist.darkMode ? dark_theme : {},
     topBar: [],
     bottomBar: [],
 
@@ -18,16 +21,6 @@
     columns: colHeaders,
     colWidth: 150,
     allowResizeCols: true,
-
-    // columns: [
-    //   { title: 'Channel', source: 0 },
-    //   { title: 'Symbol', source: 1 },
-    //   { title: 'Wattage', source: 2 },
-    //   { title: 'Position', source: 3 },
-    //   { title: 'Unit Number', source: 4 },
-    //   { title: 'Color', source: 5 },
-    //   { title: 'UID', source: 6 },
-    // ],
   };
 
   const dgxl = (node: HTMLDivElement) => {
