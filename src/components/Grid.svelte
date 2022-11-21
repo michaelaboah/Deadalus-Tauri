@@ -9,6 +9,7 @@
     source: number;
   }
   export let colHeaders: Column[] = [];
+  export let rows = 64;
 
   let grid: { getData: () => any };
 
@@ -21,6 +22,8 @@
     columns: colHeaders,
     colWidth: 150,
     allowResizeCols: true,
+
+    data: DataGridXL.createDummyData(rows, 2),
   };
 
   const dgxl = (node: HTMLDivElement) => {
