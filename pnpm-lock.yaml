@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@apollo/client': ^3.7.1
+  '@datagridxl/datagridxl2': ^2.0.8
   '@graphql-codegen/cli': ^2.13.8
   '@graphql-codegen/typescript': ^2.8.0
   '@graphql-codegen/typescript-operations': ^2.5.5
@@ -67,6 +68,7 @@ dependencies:
   tauri-plugin-store-api: github.com/tauri-apps/tauri-plugin-store/9bd993aa67766596638bbfd91e79a1bf8f632014
 
 devDependencies:
+  '@datagridxl/datagridxl2': 2.0.11
   '@graphql-codegen/cli': 2.13.8_yphvitncqnamqkli3dcukmeey4
   '@graphql-codegen/typescript': 2.8.0_graphql@16.6.0
   '@graphql-codegen/typescript-operations': 2.5.5_graphql@16.6.0
@@ -733,6 +735,10 @@ packages:
     engines: {node: '>=12'}
     dependencies:
       '@jridgewell/trace-mapping': 0.3.9
+    dev: true
+
+  /@datagridxl/datagridxl2/2.0.11:
+    resolution: {integrity: sha512-GCIhp3MntYnxAIRpjLxTCDJoNbofWxNV8D5Z81gSiI6NhWcn91iIN6Mx77KS04U5Htda8ivy0PMCTXwjGoNjfQ==}
     dev: true
 
   /@esbuild/android-arm/0.15.12:

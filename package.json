@@ -29,10 +29,11 @@
     "printjs": "^1.1.0",
     "svelte-command-palette": "^1.2.1",
     "svelte-spa-router": "^3.3.0",
-    "tauri-plugin-store-api": "github:tauri-apps/tauri-plugin-store#dev",
-    "tauri-plugin-sqlite": "github:lzdyes/tauri-plugin-sqlite#v0.1.1"
+    "tauri-plugin-sqlite": "github:lzdyes/tauri-plugin-sqlite#v0.1.1",
+    "tauri-plugin-store-api": "github:tauri-apps/tauri-plugin-store#dev"
   },
   "devDependencies": {
+    "@datagridxl/datagridxl2": "^2.0.8",
     "@graphql-codegen/cli": "^2.13.8",
     "@graphql-codegen/typescript": "^2.8.0",
     "@graphql-codegen/typescript-operations": "^2.5.5",

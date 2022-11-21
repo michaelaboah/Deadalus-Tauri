@@ -1,19 +1,21 @@
 <script lang="ts">
-  import Router from "svelte-spa-router";
-  import MainMenu from "../pages/MainMenu.svelte";
-  import Bye from "../pages/Bye.svelte";
-  import EquipmentListPage from "../pages/EquipmentListPage.svelte";
-  import PreferencesPage from "../pages/PreferencesPage.svelte";
-  import ProductionPage from "../pages/ProductionPage.svelte";
-  import { Box } from "@svelteuidev/core";
-  import DatabaseView from "../pages/DatabaseView.svelte";
+  import Router from 'svelte-spa-router';
+  import MainMenu from '../pages/MainMenu.svelte';
+  import Bye from '../pages/Bye.svelte';
+  import EquipmentListPage from '../pages/EquipmentListPage.svelte';
+  import PreferencesPage from '../pages/PreferencesPage.svelte';
+  import ProductionPage from '../pages/ProductionPage.svelte';
+  import { Box } from '@svelteuidev/core';
+  import DatabaseView from '../pages/DatabaseView.svelte';
+  import IoList from '../pages/IOList.svelte';
   const routes = {
-    "/": MainMenu,
-    "/Bye": Bye,
-    "/EquipmentListPage": EquipmentListPage,
-    "/PreferencesPage": PreferencesPage,
-    "/ProductionPage": ProductionPage,
-    "/DatabaseView": DatabaseView,
+    '/': MainMenu,
+    '/Bye': Bye,
+    '/EquipmentListPage': EquipmentListPage,
+    '/PreferencesPage': PreferencesPage,
+    '/ProductionPage': ProductionPage,
+    '/DatabaseView': DatabaseView,
+    '/IOList': IoList,
   };
 </script>
 
