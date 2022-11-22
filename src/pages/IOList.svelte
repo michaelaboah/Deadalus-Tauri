@@ -1,13 +1,17 @@
 <script lang="ts">
-  import { Box, Center, Group, NumberInput, Title } from '@svelteuidev/core';
+  import { Box, Button, Center, Group, Title } from '@svelteuidev/core';
+  import type { Input } from '../Classes';
+  import { ioList } from '../stores/ProjectStore';
   import Grid from '../components/Grid.svelte';
 
   let inputHeader = [
-    { title: 'Channel #: ', source: 0 },
-    { title: 'Channel Description: ', source: 1 },
+    { title: 'Channel #: ', source: 'channel' },
+    { title: 'Channel Description: ', source: 'input_device' },
+    { title: 'Channel Description: ', source: 'actor' },
+    { title: 'Channel Description: ', source: 'note' },
   ];
 
-  let thing = 64;
+  let test: Input = { channel: null, input_device: null, actor: null, note: null };
 </script>
 
 <Box mb="lg">
@@ -18,13 +22,18 @@
 <Box>
   <Group grow>
     <Box>
-      <NumberInput bind:value="{thing}" />
-      {#key thing}
-        <Grid colHeaders="{inputHeader}" bind:rows="{thing}" />
+      <!-- <NumberInput bind:value="{thing}" /> -->
+      <Button
+        on:click="{() => {
+          $ioList.input_list = [...$ioList.input_list, { ...test }];
+        }}">Add Row</Button
+      >
+      {#key $ioList.input_list}
+        <Grid colHeaders="{inputHeader}" data="{$ioList.input_list}" />
       {/key}
     </Box>
     <Box>
-      <Grid />
+      <!-- <Grid /> -->
     </Box>
   </Group>
 </Box>

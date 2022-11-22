@@ -12,8 +12,8 @@
     theme,
     Tooltip,
   } from '@svelteuidev/core';
-  import { buildItem, type Gear, type Item } from '../Classes';
-  import { AsyncGlobalItemSearch, Categories, type Item as ItemGraphql } from '../generated/graphql';
+  import { buildEquipment, type Gear, type Equipment } from '../Classes';
+  import { AsyncGlobalItemSearch, type Item } from '../generated/graphql';
   //@ts-ignore
   import Select from 'svelte-select';
   import { gearList } from '../stores/ProjectStore';
@@ -32,35 +32,14 @@
   $: totalPower = (gear.quantity * basePower) as number;
 
   const asyncTest = async (fillerText: string) => {
-    // if ($persist.sql_auto_store) {
-    //   const {
-    //     data: { fuzzyItemSearch },
-    //   } = await AsyncGlobalItemSearch({ variables: { model: fillerText } });
-
-    //   const sqlTest = storeItem({
-    //     ...fuzzyItemSearch,
-    //     processor: null,
-    //     console: null,
-    //     createdAt: "",
-    //     id: "",
-    //     updatedAt: "",
-    //     category: Categories.Generic,
-    //     model: "",
-    //   });
-    //   console.log(sqlTest);
-    //   return fuzzyItemSearch;
-    // } else {
-    //   const response = await AsyncGlobalItemSearch({ variables: { model: fillerText } });
-    //   return response.data.fuzzyItemSearch;
-    // }
     const response = await AsyncGlobalItemSearch({ variables: { model: fillerText } });
     return response.data.fuzzyItemSearch;
   };
 
-  const addItem = () => {
-    gear.items = [...gear.items, buildItem({ ...({} as Item), itemId: gear.items.length })];
+  const addEquipment = () => {
+    gear.items = [...gear.items, buildEquipment({ ...({} as Equipment), itemId: gear.items.length })];
   };
-  const deleteItem = (itemId: number) => {
+  const deleteEquipment = (itemId: number) => {
     gear.items.splice(itemId, 1);
     gear.items = gear.items.map((x, index) => (x = { ...x, itemId: (x.itemId = index) }));
   };
@@ -71,7 +50,7 @@
   };
 
   //handle total item count
-  const handleItemChange = () => {
+  const handleEquipmentChange = () => {
     const sum = gear.items.map((item) => item.itemQuantity);
     gear.quantity = sum.reduce((partial, i) => partial + i, 0);
   };
@@ -81,7 +60,7 @@
   //   return ($gearList[index] = createEquip);
   // };
 
-  const handleSelect = (e: { detail: ItemGraphql }) => {
+  const handleSelect = (e: { detail: Item }) => {
     gear = { ...gear, ...e.detail };
     $gearList[index] = gear;
     storeItem(gear);
@@ -109,7 +88,7 @@
         color: 'black !important',
         border: '1px solid var(--svelteui-colors-gray400) !important',
         opacity: '1 !important',
-        // width: "6rem",
+
         [`${theme.dark} &`]: {
           // using of SvelteUI utilities
           // bc === backgroundColor
@@ -208,7 +187,7 @@
     </Grid.Col>
     <Grid.Col span="{1}">
       <Group position="left" mt="xl">
-        <Button compact on:click="{addItem}" disabled="{!gear.model}">Add Item</Button>
+        <Button compact on:click="{addEquipment}" disabled="{!gear.model}">Add Item</Button>
         <Button compact on:click="{deleteGear}">Remove Gear: {index}</Button>
       </Group>
     </Grid.Col>
@@ -228,14 +207,14 @@
           label="Quantity"
           min="{0}"
           defaultValue="{0}"
-          on:change="{handleItemChange}"
+          on:change="{handleEquipmentChange}"
           bind:value="{itemQuantity}"
         />
       </div>
       <TextInput size="xs" label="Public Notes" bind:value="{publicNotes}" />
       <TextInput size="xs" label="Private Notes" bind:value="{privateNotes}" labelProps="{{ color: 'red' }}" />
       <Tooltip label="Delete Item" openDelay="{300}">
-        <CloseButton iconSize="md" on:click="{() => deleteItem(itemId)}" variant="outline" mt="lg" />
+        <CloseButton iconSize="md" on:click="{() => deleteEquipment(itemId)}" variant="outline" mt="lg" />
       </Tooltip>
     </Group>
     <!-- </SimpleGrid> -->

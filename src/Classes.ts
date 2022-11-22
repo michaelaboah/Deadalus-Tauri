@@ -1,25 +1,5 @@
-import type { SvelteUISize } from "@svelteuidev/core";
-import type { Item as ItemGraphql } from "./generated/graphql";
-
-// export interface Equipment {
-//   modelId: number;
-//   createdAt?: Date;
-//   updatedAt?: Date;
-//   category: string;
-//   manufacturer: string;
-//   model: string;
-//   publicNotes?: string;
-//   cost: number;
-//   powerDraw?: number;
-//   weight?: number;
-//   depth?: number;
-//   rackUnit?: number;
-//   frequencyRange?: string;
-//   items?: Item[];
-//   quantity?: number;
-// }
-
-// const buildEquipment = () => ({} as Equipment);
+import type { SvelteUISize } from '@svelteuidev/core';
+import type { Item } from './generated/graphql';
 
 export interface Box {
   id: number;
@@ -31,7 +11,7 @@ export interface Box {
 
 export const buildBox = (currentBox?: Box) => ({ ...currentBox } as Box);
 
-export interface Item {
+export interface Equipment {
   itemId: number;
   description: string;
   itemQuantity: number;
@@ -40,12 +20,12 @@ export interface Item {
   box?: Box;
 }
 
-export const buildItem = (currentItem?: Item): Item =>
-  currentItem ? { ...currentItem, itemQuantity: 1 } : ({} as Item);
+export const buildEquipment = (currentItem?: Equipment): Equipment =>
+  currentItem ? { ...currentItem, itemQuantity: 1 } : ({} as Equipment);
 
-export type Gear = ItemGraphql & { items: Item[]; gearId: number; quantity: number };
+export type Gear = Item & { items: Equipment[]; gearId: number; quantity: number };
 
-export const buildGear = (currentGear: Gear) => ({ ...currentGear, items: [buildItem()] } as Gear);
+export const buildGear = (currentGear: Gear) => ({ ...currentGear, items: [buildEquipment()] } as Gear);
 
 export interface ProductionInformation {
   productionName: string;
@@ -68,6 +48,7 @@ export const buildProdInfo = (productionInfo?: ProductionInformation): Productio
 export interface Project {
   productionInformation: ProductionInformation;
   gearList: Gear[];
+  ioList: IO;
 }
 
 export const createProject = (project?: Project): Project => ({ ...project } as Project);
@@ -80,6 +61,20 @@ export interface UserPreferences {
   ui_font_size: SvelteUISize;
 }
 
-// export const buildThing = (item: ItemGraphql) => {
-//   item.
-// }
+export interface Input {
+  channel: number | null;
+  input_device: string | null;
+  actor: string | null;
+  note: string | null;
+}
+
+export interface Output {
+  channel: number;
+  output_device: string;
+  destination: string;
+}
+
+export type IO = {
+  input_list: Input[];
+  output_list: Output[];
+};
