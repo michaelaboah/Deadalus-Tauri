@@ -5,11 +5,7 @@
   import { persist } from '../stores/renderStore';
   import { ioList } from '../stores/ProjectStore';
   import { dark_theme } from './Grid_Utils/style';
-  //   export let inputData;
-  // interface Column {
-  //   title: string;
-  //   source: number;
-  // }
+
   export let colHeaders;
   export let data;
 
@@ -36,8 +32,15 @@
     $ioList.input_list = $ioList.input_list;
   };
 
+  const handleCellChange = (e) => {
+    // console.log(grid.getData());
+    $ioList.input_list = [...grid.getData()];
+    console.log($ioList.input_list);
+  };
+
   $: if (grid) {
     grid.events.on('insertrows', handleInsert);
+    grid.events.on('setcellvalues', handleCellChange);
   }
 </script>
 

@@ -38,7 +38,7 @@
         <Button size="{BUTTON_SIZE}" on:click="{() => push('#/IOList')}">IO List</Button>
       </Grid.Col>
       <Grid.Col span="{2}">
-        <Button size="{BUTTON_SIZE}" on:click="{() => console.log($project.productionInformation)}">Project</Button>
+        <Button size="{BUTTON_SIZE}" on:click="{() => console.log(JSON.stringify($project))}">Project</Button>
       </Grid.Col>
       <Grid.Col span="{1}" offset="{13}">
         <ActionIcon radius="md" size="md" variant="hover" color="{isDark}" on:click="{() => push('#/PreferencesPage')}">

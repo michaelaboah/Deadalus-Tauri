@@ -63,8 +63,8 @@ export interface UserPreferences {
 
 export interface Input {
   channel: number | null;
+  input_description: string | null;
   input_device: string | null;
-  actor: string | null;
   note: string | null;
 }
 

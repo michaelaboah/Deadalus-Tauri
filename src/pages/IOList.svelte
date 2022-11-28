@@ -5,13 +5,13 @@
   import Grid from '../components/Grid.svelte';
 
   let inputHeader = [
-    { title: 'Channel #: ', source: 'channel' },
-    { title: 'Channel Description: ', source: 'input_device' },
-    { title: 'Channel Description: ', source: 'actor' },
-    { title: 'Channel Description: ', source: 'note' },
+    { title: 'Channel #: ', field: 'channel', source: 'channel' },
+    { title: 'Input Device: ', field: 'input_device', source: 'input_device' },
+    { title: 'Source Description: ', field: 'input_description', source: 'input_description' },
+    { title: 'Note: ', field: 'note', source: 'note' },
   ];
 
-  let test: Input = { channel: null, input_device: null, actor: null, note: null };
+  let test: Input = { channel: null, input_device: null, input_description: null, note: null };
 </script>
 
 <Box mb="lg">
