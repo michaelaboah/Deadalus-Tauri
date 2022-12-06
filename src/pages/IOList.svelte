@@ -12,6 +12,8 @@
   ];
 
   let test: Input = { channel: null, input_device: null, input_description: null, note: null };
+
+  let input_grid;
 </script>
 
 <Box mb="lg">
@@ -29,7 +31,7 @@
         }}">Add Row</Button
       >
       {#key $ioList.input_list}
-        <Grid colHeaders="{inputHeader}" data="{$ioList.input_list}" />
+        <Grid colHeaders="{inputHeader}" data="{$ioList.input_list}" bind:this="{input_grid}" />
       {/key}
     </Box>
     <Box>
